@@ -256,9 +256,9 @@ int main(int argsc, char ** argsv)
                         for (auto & face_id_pair : faces){
                             Face face_emo = face_id_pair.second;
                             std::cerr << " Valence: " << face_emo.emotions.valence<< endl;
-//                            std::string s = std::to_string(face_emo.emotions.valence);
+                            std::string s = std::to_string(face_emo.emotions.valence);
                             //send(server,&face_emo.emotions.valence, bufsize, 0);
-                            send(server,sprintf(buffer,"%d",int(face_emo.emotions.valence)),bufsize,0);
+                            send(server,s.c_str(),bufsize,0);
                         }
                         
                         
