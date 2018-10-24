@@ -255,15 +255,13 @@ int main(int argsc, char ** argsv)
                         }
                         for (auto & face_id_pair : faces){
                             Face face_emo = face_id_pair.second;
+                            std::cerr << " Valence: " << face_emo.emotions.valence<< endl;
+                            send(server, face_emo.emotions.valence, bufsize, 0);
                         }
                         
-                        std::cerr << "timestamp: " << frame.getTimestamp()
-                        << " cfps: " << listenPtr->getCaptureFrameRate()
-                        << " pfps: " << listenPtr->getProcessingFrameRate()
-                        << " Valence: " << face_emo.emotions.valence
-                        << " faces: " << faces.size() << endl;
                         
-                        send(server, face_emo.emotions.valence, bufsize, 0);
+                        
+                        
                         
                         //Output metrics to the file
                         //listenPtr->outputToFile(faces, frame.getTimestamp());
