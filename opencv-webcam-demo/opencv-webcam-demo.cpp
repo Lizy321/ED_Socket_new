@@ -47,7 +47,7 @@ int main(int argsc, char ** argsv)
     
     int client, server;
     int portnum = 80;
-    int bufsize = 1024;
+    int bufsize = 20;
     bool isExit = false;
     char buffer[bufsize];
     socklen_t size;
@@ -257,7 +257,8 @@ int main(int argsc, char ** argsv)
                             Face face_emo = face_id_pair.second;
                             std::cerr << " Valence: " << face_emo.emotions.valence<< endl;
 //                            std::string s = std::to_string(face_emo.emotions.valence);
-                            send(server,&face_emo.emotions.valence, bufsize, 0);
+                            //send(server,&face_emo.emotions.valence, bufsize, 0);
+                            send(server,sprintf(buffer,"%d",int(face_emo.emotions.valence)),bufsize,0);
                         }
                         
                         
