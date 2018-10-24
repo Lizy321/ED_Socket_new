@@ -46,7 +46,7 @@ int main(int argsc, char ** argsv)
     shared_ptr<FrameDetector> frameDetector;
     
     int client, server;
-    int portnum = stoi(80);
+    int portnum = 80;
     int bufsize = 1024;
     bool isExit = false;
     char buffer[bufsize];
@@ -254,16 +254,16 @@ int main(int argsc, char ** argsv)
                             listenPtr->draw(faces, frame);
                         }
                         for (auto & face_id_pair : faces){
-                            Face f = face_id_pair.second;
+                            Face face_emo = face_id_pair.second;
                         }
                         
                         std::cerr << "timestamp: " << frame.getTimestamp()
                         << " cfps: " << listenPtr->getCaptureFrameRate()
                         << " pfps: " << listenPtr->getProcessingFrameRate()
-                        << " Valence: " << f.emotions.valence
+                        << " Valence: " << face_emo.emotions.valence
                         << " faces: " << faces.size() << endl;
                         
-                        send(server, f.emotions.valence, bufsize, 0);
+                        send(server, face_emo.emotions.valence, bufsize, 0);
                         
                         //Output metrics to the file
                         //listenPtr->outputToFile(faces, frame.getTimestamp());
