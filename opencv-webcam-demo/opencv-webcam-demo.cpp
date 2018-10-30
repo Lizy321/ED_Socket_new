@@ -83,7 +83,7 @@ int main(int argsc, char ** argsv)
     while (server > 0)
     {
         strcpy(buffer, "--> Server connected...\n");
-        send(server, buffer, bufsize, 0);
+        //send(server, buffer, bufsize, 0);
         cout << "--> Connected to the client" << endl;
         cout << "\nEnter # to end the connection\n\n" << endl;
         
